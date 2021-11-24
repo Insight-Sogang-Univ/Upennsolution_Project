@@ -6,7 +6,8 @@ def get_news_url():
     news_url = []
     for i in range(int(parameters['page'])):
         parameters['page'] = i + 1
-        response = req.get(base_url, headers=header, data=parameters)
+        url=base_url+parameters['sid1']
+        response = req.get(url, headers=header, data=parameters)
         soup=bs(response.content, 'html.parser')
         contents = soup.find_all('ul',{"class":["type06_headline","type06"]})
         tmp=[]
