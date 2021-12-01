@@ -7,24 +7,12 @@ header = {
                   " Chrome/92.0.4515.159 Safari/537.36 "
 }
 
-# 컬럼 설정 ( 0 : 컬럼비활성화, 1 : 컬럼활성화)
-column_config = {
-    "column_url" : 0, # 기사 url
-    "column_title": 1,  # 기사 제목
-    "column_contents": 1,  # 기사 본문
-    "column_press": 0,  # 언론사
-    "column_time": 1,  # 기사 입력시간
-    "column_author": 0,  # 기자명
-    "column_commentnum": 1,  # 댓글수
-    "column_reactnum": 1  # 반응수
-}
-
-
 parameters = {
-    'sid1': '001',  # 가변 항목 ( 속보:001, 정치:100, 경제:101, 사회:102, 생활/문화:103, 세계:104, IT/과학:105 )
+    'sid1': '',  # 가변 항목 ( 속보:001, 정치:100, 경제:101, 사회:102, 생활/문화:103, 세계:104, IT/과학:105 )
     'date': '00:00:00',
     'page': '1',  # 가변 항목
 }
+
 '''
 전체 댓글 수 수집 코드에 쓰일 헤더, 파라미터
 '''
@@ -87,13 +75,8 @@ react_parameters = {
     'isDuplication': 'false'
 }
 
-
-
 detail_base_url = 'https://news.naver.com/main/read.naver'
 fixed_parameters = 'mode=LSD&mid=shm'
-
-last_page = 999999999         # 변동 페이지 옵션
-MAX_articles = 10 * last_page
 
 result_path = '/Users/eon/Downloads'
 json_result_path = result_path + '/f1json.json'

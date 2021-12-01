@@ -43,92 +43,36 @@ def make_dataset(news_url, header):
         raw = req.get(url, headers=header)
         article = bs(raw.text, "html.parser")
 
-        # columns setting
-
         url_parsing(url)
 
-        if column_config["column_url"] == 1:
-            news["기사 URL"] = url
+        try:
+            title = article.find('h3', id='articleTitle').text
+            news["기사 제목"] = title
+        except AttributeError:
+            title = ""
+            pass
 
-        if column_config["column_title"] == 1:
-            try:
-                title = article.find('h3', id='articleTitle').text
-                news["기사 제목"] = title
-            except AttributeError:
-                title = ""
-                pass
+        try:
+            time = article.find('span', class_='t11').text
+            news["기사 입력시각"] = time
+        except AttributeError:
+            time = ""
+            pass
 
-        if column_config["column_contents"] == 1:
-            try:
-                content = article.find('div', id='articleBodyContents').text.strip()
-                news["기사 본문"] = content
-            except AttributeError:
-                content = ""
-                pass
+        try:
+            comment_num = get_comment()
+            news["댓글수"] = comment_num
+        except AttributeError:
+            comment_num = ""
+            pass
 
-        if column_config["column_press"] == 1:
-            try:
-                press = article.find('div', class_='press_logo').find('img')['title']
-                news["언론사"] = press
-            except AttributeError:
-                press = ""
-                pass
-
-        if column_config["column_time"] == 1:
-            try:
-                time = article.find('span', class_='t11').text
-                news["기사 입력시각"] = time
-            except AttributeError:
-                time = ""
-                pass
-
-        if column_config["column_author"] == 1:
-            try:
-                author = article.find('div', class_='journalistcard_summary_name').text
-                # if "(" in author :
-                #     author = author.split("(")[0]
-                news["기자명"] = author
-            except AttributeError:
-                try:
-                    author = article.find('div', class_='byline').find('p').text
-                    # if "(" in author:
-                    #     author = author.split("(")[0]
-                    news["기자명"] = author
-                except AttributeError:
-                    pass
-
-        # if column_config["column_author_email"] == 1:
-        #     try:
-        #         author = article.find('div', class_='journalistcard_summary_name').text
-        #         if "(" in author :
-        #             author = author.split("(")[1]
-        #         news["기자 이메일"] = author
-        #     except AttributeError:
-        #         try:
-        #             author = article.find('div', class_='byline').find('p').text
-        #             if "(" in author:
-        #                 author = author.split("(")[1]
-        #             news["기자 이메일"] = author
-        #         except AttributeError:
-        #             pass
-
-        if column_config["column_commentnum"] == 1:
-            try:
-                comment_num = get_comment()
-                news["댓글수"] = comment_num
-            except AttributeError:
-                comment_num = ""
-                pass
-
-        if column_config["column_reactnum"] == 1:
-            try:
-                react_num = get_react()
-                news["반응수"] = react_num
-            except AttributeError:
-                react_num = ""
-                pass
+        try:
+            react_num = get_react()
+            news["반응수"] = react_num
+        except AttributeError:
+            react_num = ""
+            pass
 
         list_result.append(news)
     print("scraping task finished")
-
     return list_result
