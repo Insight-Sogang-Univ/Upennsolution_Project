@@ -14,7 +14,7 @@ def sports():
     driver.get(base_url)
     cnt = 1
     result = []
-    for j in range(1, 11):
+    for j in range(1, 2):
         contents = driver.find_elements_by_xpath('//*[@id="_newsList"]/ul/li')
         for i in contents:
             tmp = {}
@@ -89,4 +89,5 @@ def sports():
             break
 
     df = pd.DataFrame(result)
+    parameters['sid1']="sports"
     file_writer(df)
