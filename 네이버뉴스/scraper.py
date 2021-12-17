@@ -47,14 +47,14 @@ def make_dataset(news_url, header):
 
         try:
             title = article.find('h3', id='articleTitle').text
-            news["기사 제목"] = title
+            news["제목"] = title
         except AttributeError:
             title = ""
             pass
 
         try:
             time = article.find('span', class_='t11').text
-            news["기사 입력시각"] = time
+            news["날짜"] = time
         except AttributeError:
             time = ""
             pass
