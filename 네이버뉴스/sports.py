@@ -18,8 +18,8 @@ def sports():
         contents = driver.find_elements_by_xpath('//*[@id="_newsList"]/ul/li')
         for i in contents:
             tmp = {}
-            print('-' * 15)
-            print(cnt)
+            #print('-' * 15)
+            #print(cnt)
             cnt = cnt + 1
 
             # 분야 추출
@@ -28,7 +28,7 @@ def sports():
 
             # 제목 추출
             title = i.find_element_by_class_name('title').text.strip()
-            print("제목: ", title)
+            #print("제목: ", title)
 
             # 글쓴이 추출
             # writer_tag = i.find('span', class_='nick')
@@ -47,7 +47,7 @@ def sports():
 
             # 날짜 추출
             date = i.find_element_by_class_name('time').text
-            print("날짜: ", date)
+            #print("날짜: ", date)
 
             # 조회 수 추출
             # views = i.find('span',{"class":"viewV"}).text
@@ -85,9 +85,10 @@ def sports():
             driver.execute_script("arguments[0].click();", page)
             time.sleep(3)
         except:
-            print("dasd")
+            #print("dasd")
             break
 
     df = pd.DataFrame(result)
     parameters['sid1']="sports"
     file_writer(df)
+    driver.quit()

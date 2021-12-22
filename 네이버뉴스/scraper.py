@@ -1,5 +1,5 @@
 from crawler import *
-
+from datetime import datetime
 from tqdm import tqdm
 
 def get_comment():
@@ -53,7 +53,16 @@ def make_dataset(news_url, header):
             pass
 
         try:
-            time = article.find('span', class_='t11').text
+            time_tmp = article.find('span', class_='t11').text
+            if "오후" in time_tmp:
+                tmp=time_tmp.split('오후 ')
+                a=tmp[1].split(':')
+                hour=int(a[0])+12
+                time_tmp = tmp[0]+str(hour)+":"+a[1]
+            else:
+                time_tmp=time_tmp.replace('오전 ',"")
+            time = datetime.strptime(time_tmp,'%Y.%m.%d. %H:%M')
+            time=str(time).replace('-','.')[0:-3]
             news["날짜"] = time
         except AttributeError:
             time = ""
