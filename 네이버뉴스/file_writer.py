@@ -21,8 +21,4 @@ def file_writer(result_data):
     df_new=merge(rdf)
 
     # excel
-    df_new.to_excel(str(parameters['sid1'])+'_test_merge.xlsx', index=False)
-
-    # json
-    # with open('test.json', 'w', encoding='utf-8') as file:
-    #     rdf.to_json(file, force_ascii=False)
+    df_new.to_excel(str(parameters['sid1'])+'_test.xlsx', index=False)

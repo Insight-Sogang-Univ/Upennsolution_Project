@@ -2,7 +2,7 @@ from crawler import get_news_url
 from scraper import make_dataset
 from sports import sports
 from file_writer import *
-
+from analysis import *
 if __name__ == "__main__":
     print("Naver Category Crawling program start")
     for i in ['001','100','101','102']:
@@ -12,5 +12,7 @@ if __name__ == "__main__":
         file_writer(result_dict)
 
     sports()
+
+    anal()
     print("Naver Category Crawling program finished")
 
