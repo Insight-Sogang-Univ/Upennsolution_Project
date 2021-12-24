@@ -10,9 +10,8 @@ if __name__ == "__main__":
         naver_news_url = get_news_url()
         result_dict = make_dataset(naver_news_url, header)
         file_writer(result_dict)
-
     sports()
-
-    anal()
+    for sid in ['001','100','101','102','sports']:
+        anal(sid)
     print("Naver Category Crawling program finished")
 

@@ -49,9 +49,9 @@ def count_df(t,df):
                 count=count+1
     return count
 
-def anal():
+def anal(file):
     hannanum = Hannanum()
-    df = pd.read_excel('001_test.xlsx')
+    df = pd.read_excel('data/'+file+'.xlsx')
     df['token'] = df['제목'].apply(lambda x: text_preprocess(x))
     df['token'] = df['token'].apply(lambda x: hannanum.nouns(x))
     df['data'] = df['token'].apply(lambda x: get(x))
@@ -66,7 +66,7 @@ def anal():
     result = result.sort_values(by=['DF'], ascending=False)
     result=result.head(10)
 
-    result.to_excel('test_result.xlsx')
+    result.to_excel('data/'+file+'_result.xlsx')
     # json
-    with open('test.json', 'w', encoding='utf-8') as file:
+    with open('data/'+file+'_result.json', 'w', encoding='utf-8') as file:
         result.to_json(file, force_ascii=False)

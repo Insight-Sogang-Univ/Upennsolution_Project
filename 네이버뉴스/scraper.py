@@ -83,5 +83,5 @@ def make_dataset(news_url, header):
             pass
 
         list_result.append(news)
-    print("scraping task finished")
+    #print("scraping task finished")
     return list_result
