@@ -66,6 +66,20 @@ def anal(file):
     result = result.sort_values(by=['DF'], ascending=False)
     result=result.head(10)
 
+
+    result_before=pd.read_excel('data/'+file+'_result.xlsx')
+
+    ###  순위 상승 -> 음수   ///  순위 하락 -> 양수
+    for i in range(len(result)):
+        word = result.iloc[i, 0]
+        for j in range(len(result_before)):
+            tmp = result_before.iloc[j, 0]
+            if word == tmp:
+                result.loc[i, "순위변동"] = i - j
+            else:
+                pass
+
+    # excel
     result.to_excel('data/'+file+'_result.xlsx')
     # json
     with open('data/'+file+'_result.json', 'w', encoding='utf-8') as file:
