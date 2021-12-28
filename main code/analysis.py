@@ -70,9 +70,9 @@ def anal(file):
         result_before=pd.read_excel('result/'+file+'_result.xlsx')
         ###  순위 상승 -> 음수   ///  순위 하락 -> 양수
         for i in range(len(result)):
-            word = result.iloc[i, 0]
+            word = result.loc[i, 'index']
             for j in range(len(result_before)):
-                tmp = result_before.iloc[j, 0]
+                tmp = result_before.loc[j, 'index']
                 if word == tmp:
                     result.loc[i, "순위변동"] = i - j
                 else:
@@ -80,6 +80,7 @@ def anal(file):
     except:
         pass
 
+    result=result.reset_index()
     # excel
     result.to_excel('result/'+file+'_result.xlsx')
     # json
