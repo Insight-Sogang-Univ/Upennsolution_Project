@@ -1,14 +1,9 @@
 var express=require('express')
-const schedule=require('node-schedule');
+var cron=require('node-cron');
 const spawn=require('child_process').spawn;
 const fs=require('fs');
-var path=require('path');
 var newstemplate=require('./frontend/newstemplate.js');
 var hottemplate=require('./frontend/hottemplate.js')
-
-const rule=new schedule.RecurrenceRule();
-var updating=0;
-rule.minute=30;
 
 var newsTotal, newsPol, newsEco, newsSoc, newsSpo;
 var hotTotal, hotDc, hotCli, hotNate, hotDocu, hotBobe, hotBull, hotPom, hotIns;
@@ -70,16 +65,12 @@ function readData(){
     hotIns=JSON.parse(dataJson);
 }
 
-const job=schedule.scheduleJob(rule, function(){
-    if(updating===0){
-        updating=1;
-        const python=spawn('python', ['main.py']);
-        python.on('close', ()=>{
-            updating=0;
-            readData();
-        })
-    }
-})
+cron.schedule('*/30 * * * *', ()=>{
+  const python=spawn('python', ['main.py']);
+  python.on('close', ()=>{
+    readData();
+  });
+});
 
 readData();
 var app=express();
