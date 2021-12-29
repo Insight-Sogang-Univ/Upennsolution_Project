@@ -6,7 +6,7 @@ from analysis import *
 from community import *
 if __name__ == "__main__":
     #네이버 뉴스 크롤링
-    # for i in ['001','100','101','102']:
+    # for i in ['001','100','101','102']:   #'001','100','101','102'
     #     parameters['sid1']=i
     #     naver_news_url = get_news_url()
     #     result_dict = make_dataset(naver_news_url, header)
@@ -17,6 +17,6 @@ if __name__ == "__main__":
     # community()
 
     #분석
-    for sid in ['인벤']:   #'001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','보배드림','bullpen','뽐뿌','instiz',
+    for sid in ['001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','보배드림','bullpen','뽐뿌','instiz','인벤']:   #'001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','보배드림','bullpen','뽐뿌','instiz','인벤'
         anal(sid)
         #print(sid+" anal finish")

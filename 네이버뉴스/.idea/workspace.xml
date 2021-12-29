@@ -5,36 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2ca382d-9029-4e77-854f-bd788e2b71d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/네이버뉴스.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JPype1-1.1.2-cp38-cp38-win_amd64.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configure_request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/001.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/001_result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/001_result.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/100.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/100_result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/100_result.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/101.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/101_result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/101_result.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/102.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/102_result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/102_result.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sports.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sports_result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sports_result.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_writer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sports.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../main code" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -78,6 +50,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -101,7 +74,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1637134360253</updated>
+      <workItem from="1640757643444" duration="23000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
