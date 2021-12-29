@@ -347,95 +347,95 @@ def community():
     #print("더쿠 finish")
     ###############################################################################보배드림
 
-    base_url='https://www.bobaedream.co.kr/list?code=best&s_cate=&maker_no=&model_no=&or_gu=10&or_se=desc&s_selday=&pagescale=30&info3=&noticeShow=&s_select=&s_key=&level_no=&bestCode=&bestDays=&bestbbs=&vdate=&type=list&page=1'
-    d = datetime.datetime.now()
-    now = d.strftime('%X')
-    dt_now = datetime.datetime.now()
-    cnt = 1
-    result = []
-    page_num = 1
-    time_format_today = '%Y.%m.%d %H:%M'
-    time_format_other_day = '%Y.%m.%d'
+    # base_url='https://www.bobaedream.co.kr/list?code=best&s_cate=&maker_no=&model_no=&or_gu=10&or_se=desc&s_selday=&pagescale=30&info3=&noticeShow=&s_select=&s_key=&level_no=&bestCode=&bestDays=&bestbbs=&vdate=&type=list&page=1'
+    # d = datetime.datetime.now()
+    # now = d.strftime('%X')
+    # dt_now = datetime.datetime.now()
+    # cnt = 1
+    # result = []
+    # page_num = 1
+    # time_format_today = '%Y.%m.%d %H:%M'
+    # time_format_other_day = '%Y.%m.%d'
 
-    while True:
-    # for i in range(1, page_num):
-        params = {"page": page_num}
-        page_num+=1
-        raw = req.get(base_url, params=params)
-        soup = bs(raw.content, 'html.parser')
-        contents = soup.find('tbody').find_all('tr')
+    # while True:
+    # # for i in range(1, page_num):
+    #     params = {"page": page_num}
+    #     page_num+=1
+    #     raw = req.get(base_url, params=params)
+    #     soup = bs(raw.content, 'html.parser')
+    #     contents = soup.find('tbody').find_all('tr')
 
-        for i in contents:
-            tmp = {}
-            #print('-' * 15)
-            #print(cnt)
-            cnt = cnt + 1
+    #     for i in contents:
+    #         tmp = {}
+    #         #print('-' * 15)
+    #         #print(cnt)
+    #         cnt = cnt + 1
 
-            # 게시판 추출
-            category = i.find('td', {"class": "category"}).get('title')
-            #print("분야: ", category)
+    #         # 게시판 추출
+    #         category = i.find('td', {"class": "category"}).get('title')
+    #         #print("분야: ", category)
 
-            # 제목 추출
-            title = i.find('a', {"class": "bsubject"}).text.strip()
-            #print("제목: ", title)
+    #         # 제목 추출
+    #         title = i.find('a', {"class": "bsubject"}).text.strip()
+    #         #print("제목: ", title)
 
-            # 글쓴이 추출
-            writer_tag = i.find('span', {"class": "author"})
-            if writer_tag is not None:  # None 값이 있으므로 조건문을 통해 회피
-                writer = writer_tag.get('title')
+    #         # 글쓴이 추출
+    #         writer_tag = i.find('span', {"class": "author"})
+    #         if writer_tag is not None:  # None 값이 있으므로 조건문을 통해 회피
+    #             writer = writer_tag.get('title')
 
-            else:
-                writer = "없음"
-            #print("글쓴이: ", writer)
+    #         else:
+    #             writer = "없음"
+    #         #print("글쓴이: ", writer)
 
-            # 날짜 추출
-            date = i.find('td', {"class": "date"}).text
-            if date.find(':') == -1:
-                date = d.strftime('%Y') + '.' + date[:2] + '.' + date[3:]
-            else:
-                date = d.strftime('%Y.%m.%d ') + date
-            #print("날짜: ", date)
+    #         # 날짜 추출
+    #         date = i.find('td', {"class": "date"}).text
+    #         if date.find(':') == -1:
+    #             date = d.strftime('%Y') + '.' + date[:2] + '.' + date[3:]
+    #         else:
+    #             date = d.strftime('%Y.%m.%d ') + date
+    #         #print("날짜: ", date)
 
-            # 조회 수 추출
-            views = i.find('td', {"class": "count"}).text
-            #print("조회수: ", views)
+    #         # 조회 수 추출
+    #         views = i.find('td', {"class": "count"}).text
+    #         #print("조회수: ", views)
 
-            # 댓글 수
-            comment = i.find('span', {"class": "Comment"})
-            if comment == None:
-                comment = 0
-            else:
-                comment = comment.find('strong', {"class": "totreply"}).text
-            #print("댓글수: ", comment)
+    #         # 댓글 수
+    #         comment = i.find('span', {"class": "Comment"})
+    #         if comment == None:
+    #             comment = 0
+    #         else:
+    #             comment = comment.find('strong', {"class": "totreply"}).text
+    #         #print("댓글수: ", comment)
 
-            # 추천 수 추출
-            recommend = i.find('td', {"class": "recomm"}).text
-            #print("추천수: ", recommend)
+    #         # 추천 수 추출
+    #         recommend = i.find('td', {"class": "recomm"}).text
+    #         #print("추천수: ", recommend)
 
-            tmp['분야'] = category
-            tmp['제목'] = title
-            tmp['글쓴이'] = writer
-            tmp['날짜'] = date
-            tmp['조회수'] = views
-            tmp['댓글수'] = comment
-            tmp['추천수'] = recommend
+    #         tmp['분야'] = category
+    #         tmp['제목'] = title
+    #         tmp['글쓴이'] = writer
+    #         tmp['날짜'] = date
+    #         tmp['조회수'] = views
+    #         tmp['댓글수'] = comment
+    #         tmp['추천수'] = recommend
 
-            try :
-                tmp_datetime = pd.to_datetime(tmp['날짜'], format = time_format_today)
-            except :
-                tmp_datetime = pd.to_datetime(tmp['날짜'], format = time_format_other_day)
+    #         try :
+    #             tmp_datetime = pd.to_datetime(tmp['날짜'], format = time_format_today)
+    #         except :
+    #             tmp_datetime = pd.to_datetime(tmp['날짜'], format = time_format_other_day)
 
-            if dt_now - tmp_datetime > datetime.timedelta(minutes = 30) :
-                break
+    #         if dt_now - tmp_datetime > datetime.timedelta(minutes = 30) :
+    #             break
 
-            result.append(tmp)
+    #         result.append(tmp)
 
-        if dt_now - tmp_datetime > datetime.timedelta(minutes = 30) :
-            break
+    #     if dt_now - tmp_datetime > datetime.timedelta(minutes = 30) :
+    #         break
 
-    df=pd.DataFrame(result)
-    df.to_excel('data/보배드림.xlsx')
-    #print("보배드림 finish")
+    # df=pd.DataFrame(result)
+    # df.to_excel('data/보배드림.xlsx')
+    # #print("보배드림 finish")
     ###############################################################################불펜
 
     base_url='http://mlbpark.donga.com/mp/b.php?p=1&m=list&b=bullpen&query=&select=&user='

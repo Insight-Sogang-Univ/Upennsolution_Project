@@ -6,7 +6,7 @@ var newstemplate=require('./frontend/newstemplate.js');
 var hottemplate=require('./frontend/hottemplate.js')
 
 var newsTotal, newsPol, newsEco, newsSoc, newsSpo;
-var hotTotal, hotDc, hotCli, hotNate, hotDocu, hotBobe, hotBull, hotPom, hotIns;
+var hotInv, hotDc, hotCli, hotNate, hotDocu, hotBobe, hotBull, hotPom, hotIns;
 function readData(){
     var file=fs.readFileSync('./result/001_result.json');
     var dataJson=file.toString();
@@ -30,7 +30,7 @@ function readData(){
 
     file=fs.readFileSync('./result/인벤_result.json');
     dataJson=file.toString();
-    hotTotal=JSON.parse(dataJson);
+    hotInv=JSON.parse(dataJson);
 
     file=fs.readFileSync('./result/dcinside_result.json');
     dataJson=file.toString();
@@ -65,14 +65,28 @@ function readData(){
     hotIns=JSON.parse(dataJson);
 }
 
-cron.schedule('*/30 * * * *', ()=>{
+cron.schedule('*/5 * * * *', ()=>{
   const python=spawn('python', ['main.py']);
+  python.on('error', (err)=>{
+    console.log("[debug] error");
+  });
+  python.stdout.on('data', (data)=>{
+    console.log(`stdout: ${data}`);
+  });
   python.on('close', ()=>{
     readData();
+    console.log("end python");
   });
+  python.on('exit', ()=>{
+    console.log("pythen exit");
+  })
+  python.stderr.on('data', (data)=>{
+    console.log(data.toString());
+  })
 });
 
 readData();
+
 var app=express();
 app.use(express.static('frontend'))
 
@@ -143,7 +157,7 @@ function newsData(menu){
 }
 
 function hotData(menu){
-    if(menu==='total')  return hotTotal;
+    if(menu==='Inv')  return hotInv;
     else if(menu==='Dc')  return hotDc;
     else if(menu==='Docu')  return hotDocu;
     else if(menu==='Nate')  return hotNate;
@@ -152,7 +166,7 @@ function hotData(menu){
     else if(menu==='Bull')  return hotBull;
     else if(menu==='Cli')  return hotCli;
     else if(menu==='Ins')  return hotIns;
-    else    return hotTotal;
+    else    return hotDc;
 } 
 
 app.get('/', function(req, res){

@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "child-process": "^1.0.2",
     "express": "^4.17.2",
     "node-cron": "^3.0.0",
     "node-schedule": "^2.1.0"

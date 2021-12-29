@@ -20,15 +20,14 @@ module.exports={
             <div>
             <table class='center'>
                 <tr>
-                  <th><a class ='site' href="/hot?menu=total">전체</a></th>
                   <th><a href="/hot?menu=Dc">dc</a></th>
                   <th><a href="/hot?menu=Cli">클리앙</a></th>
                   <th><a href="/hot?menu=Nate">네이트판</a></th>
                   <th><a href="/hot?menu=Docu">더쿠</a></th>
-                  <th><a href="/hot?menu=Bobe">보배드림</a></th>
                   <th><a href="/hot?menu=Bull">불펜</a></th>
                   <th><a href="/hot?menu=Pom">뽐뿌</a></th>
                   <th><a href="/hot?menu=Ins">인스티즈</a></th>
+                  <th><a class ='site' href="/hot?menu=Inv">인벤</a></th>
         
                 </tr>
               </table>

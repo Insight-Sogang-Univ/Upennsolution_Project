@@ -52,24 +52,25 @@ def count_df(t,df):
 def anal(file):
     hannanum = Hannanum()
     result = []
-
-    df = pd.read_excel('data/' + file + '.xlsx')
-    df['token'] = df['제목'].apply(lambda x: text_preprocess(x))
-    df['token'] = df['token'].apply(lambda x: hannanum.nouns(x))
-    df['data'] = df['token'].apply(lambda x: get(x))
-    vocab = list(set(w for doc in df['data'] for w in doc.split()))
-    vocab.sort()
-    for i in range(len(vocab)):
-        tmp={}
-        t = vocab[i]
-        tmp['index']=t
-        tmp['DF']=count_df(t, df)
-        tmp['diff']="-"
-        result.append(tmp)
-    result = pd.DataFrame(result)
-    result = result.sort_values(by=['DF'], ascending=False)
-    result = result.head(10)
-
+    try:
+        df = pd.read_excel('data/' + file + '.xlsx')
+        df['token'] = df['제목'].apply(lambda x: text_preprocess(x))
+        df['token'] = df['token'].apply(lambda x: hannanum.nouns(x))
+        df['data'] = df['token'].apply(lambda x: get(x))
+        vocab = list(set(w for doc in df['data'] for w in doc.split()))
+        vocab.sort()
+        for i in range(len(vocab)):
+            tmp={}
+            t = vocab[i]
+            tmp['index']=t
+            tmp['DF']=count_df(t, df)
+            tmp['diff']="-"
+            result.append(tmp)
+        result = pd.DataFrame(result)
+        result = result.sort_values(by=['DF'], ascending=False)
+        result = result.head(10)
+    except:
+        pass
 
 
     try:
@@ -91,10 +92,12 @@ def anal(file):
                         result.iloc[i, 2] = str(i - j) + "위 하락"
                 else:
                     pass
+        result = result.reset_index(drop=True)
+        result = result.head(10)
     except:
-        pass
-    result=result.reset_index(drop=True)
-    result=result.head(10)
+        result_before = pd.read_excel('result/' + file + '_result.xlsx')
+        result = result_before.copy()
+
     # excel
     result.to_excel('result/'+file+'_result.xlsx')
     # json

@@ -4,7 +4,10 @@ from sports import sports
 from file_writer import *
 from analysis import *
 from community import *
+
 if __name__ == "__main__":
+    print("[debug] craulling start")
+
     #네이버 뉴스 크롤링
     for i in ['001','100','101','102']:   #'001','100','101','102'
         parameters['sid1']=i
@@ -17,6 +20,7 @@ if __name__ == "__main__":
     community()
 
     #분석
-    for sid in ['001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','보배드림','bullpen','뽐뿌','instiz','인벤']:   #'001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','보배드림','bullpen','뽐뿌','instiz','인벤'
+    for sid in ['001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','bullpen','뽐뿌','instiz','인벤']:   #'001','100','101','102','sports','dcinside','클리앙','네이트판','더쿠','보배드림','bullpen','뽐뿌','instiz','인벤'
         anal(sid)
-        #print(sid+" anal finish")
+        
+    print("[debug] python ended")
