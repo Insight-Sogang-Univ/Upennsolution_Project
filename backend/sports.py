@@ -6,7 +6,10 @@ import pandas as pd
 
 
 def sports():
-    driver = webdriver.Chrome('C:\selenium\chromedriver.exe')
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = webdriver.Chrome('C:\selenium\chromedriver.exe',options=options)
+    
     base_url = "https://sports.news.naver.com/wfootball/news/index?isphoto=N&page=1"
     date=str(datetime.today())
     date=date.split(' ')[0].replace('-','')
