@@ -14,7 +14,7 @@ module.exports={
           <body>
             <div class='center white'>
               <h1><a class='whitsse' href="/hot">핫이슈 키워드 순위</a>
-                &nbsp&nbsp&nbsp<a class='white' href="/news?menu=total" target="_self">뉴스 기반 키워드 순위</a></h1>
+                &nbsp&nbsp&nbsp<a class='white' href="/news" target="_self">뉴스 기반 키워드 순위</a></h1>
             </div>
         
             <div>
