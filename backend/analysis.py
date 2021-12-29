@@ -64,7 +64,7 @@ def anal(file):
         t = vocab[i]
         tmp['index']=t
         tmp['DF']=count_df(t, df)
-        tmp['diff']="."
+        tmp['diff']="-"
         result.append(tmp)
     result = pd.DataFrame(result)
     result = result.sort_values(by=['DF'], ascending=False)
@@ -75,13 +75,13 @@ def anal(file):
     try:
         result_before=pd.read_excel('result/'+file+'_result.xlsx')
         ###  순위 상승 -> 음수   ///  순위 하락 -> 양수
-        print(file)
+        #print(file)
         for i in range(len(result)):
             word = result.iloc[i, 0]
-            print(word)
+            #print(word)
             for j in range(len(result_before)):
                 tmp = result_before.loc[j, 'index']
-                print(tmp)
+                #print(tmp)
                 if word == tmp:
                     if i-j <0:
                         result.iloc[i, 2] = str(j-i)+"위 상승"
