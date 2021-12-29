@@ -93,52 +93,52 @@ function getTable(order){
     return `<tr class='border'>
             <td>1</td>
               <td>${order.index[0]}</td>
-              <td>${order.DF[0]}</td>
+              <td>${order.diff[0]}</td>
             </tr>
             <tr class='border'>
               <td>2</td>
               <td>${order.index[1]}</td>
-              <td>${order.DF[1]}</td>
+              <td>${order.diff[1]}</td>
             </tr>
             <tr class='border'>
               <td>3</td>
               <td>${order.index[2]}</td>
-              <td>${order.DF[2]}</td>
+              <td>${order.diff[2]}</td>
             </tr>
             <tr class='border'>
               <td>4</td>
               <td>${order.index[3]}</td>
-              <td>${order.DF[3]}</td>
+              <td>${order.diff[3]}</td>
             </tr>
             <tr class='border'>
               <td>5</td>
               <td>${order.index[4]}</td>
-              <td>${order.DF[4]}</td>
+              <td>${order.diff[4]}</td>
             </tr>
             <tr class='border'>
               <td>6</td>
               <td>${order.index[5]}</td>
-              <td>${order.DF[5]}</td>
+              <td>${order.diff[5]}</td>
             </tr>
             <tr class='border'>
               <td>7</td>
               <td>${order.index[6]}</td>
-              <td>${order.DF[6]}</td>
+              <td>${order.diff[6]}</td>
             </tr>
             <tr class='border'>
               <td>8</td>
               <td>${order.index[7]}</td>
-              <td>${order.DF[7]}</td>
+              <td>${order.diff[7]}</td>
             </tr>
             <tr class='border'>
               <td>9</td>
               <td>${order.index[8]}</td>
-              <td>${order.DF[8]}</td>
+              <td>${order.diff[8]}</td>
             </tr>
             <tr class='border'>
               <td>10</td>
               <td>${order.index[9]}</td>
-              <td>${order.DF[9]}</td>
+              <td>${order.diff[9]}</td>
             </tr>`
 }
 
@@ -162,7 +162,7 @@ function hotData(menu){
     else if(menu==='Cli')  return hotCli;
     else if(menu==='Ins')  return hotIns;
     else    return hotTotal;
-}
+} 
 
 app.get('/', function(req, res){
     var orderdata=newsData(req.query.menu);

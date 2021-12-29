@@ -60,27 +60,41 @@ def anal(file):
     vocab = list(set(w for doc in df['data'] for w in doc.split()))
     vocab.sort()
     for i in range(len(vocab)):
+        tmp={}
         t = vocab[i]
-        result.append(count_df(t, df))
-    result = pd.DataFrame(result, index=vocab, columns=['DF'])
+        tmp['index']=t
+        tmp['DF']=count_df(t, df)
+        tmp['diff']="."
+        result.append(tmp)
+    result = pd.DataFrame(result)
     result = result.sort_values(by=['DF'], ascending=False)
     result = result.head(10)
+
+
 
     try:
         result_before=pd.read_excel('result/'+file+'_result.xlsx')
         ###  순위 상승 -> 음수   ///  순위 하락 -> 양수
+        print(file)
         for i in range(len(result)):
-            word = result.loc[i, 'index']
+            word = result.iloc[i, 0]
+            print(word)
             for j in range(len(result_before)):
                 tmp = result_before.loc[j, 'index']
+                print(tmp)
                 if word == tmp:
-                    result.loc[i, "순위변동"] = i - j
+                    if i-j <0:
+                        result.iloc[i, 2] = str(j-i)+"위 상승"
+                    elif i-j ==0:
+                        result.iloc[i, 2] = "-"
+                    else:
+                        result.iloc[i, 2] = str(i - j) + "위 하락"
                 else:
                     pass
     except:
         pass
-
-    result=result.reset_index()
+    result=result.reset_index(drop=True)
+    result=result.head(10)
     # excel
     result.to_excel('result/'+file+'_result.xlsx')
     # json
