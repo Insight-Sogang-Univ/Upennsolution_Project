@@ -28,7 +28,7 @@ def get_news_url():
 
         flag=int(time[-1].text.replace("분전",""))
 
-        if flag >15:
+        if flag >30:
             break
         else:
             pg=pg+1
