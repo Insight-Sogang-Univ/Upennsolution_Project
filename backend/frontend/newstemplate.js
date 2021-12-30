@@ -1,30 +1,23 @@
 module.exports={
-    HTML:function(table){
+    HTML:function(table, menus){
         return `<!DOCTYPE html>
         <html lang="ko">
           <head>
             <meta charset="utf-8">
             <title>키워드 순위</title>
             <link rel="stylesheet" href="style.css">
-            <script src="main.js">
-              document.addEventListener('click', function() {alert('Clicked!');});
-            </script>
                     
           </head>
           <body>
             <div class='center white'>
-              <h1><a class='whitsse' href="/hot">핫이슈 키워드 순위</a>
-                &nbsp&nbsp&nbsp<a class='white' href="/news" target="_self">뉴스 기반 키워드 순위</a></h1>
+              <h1><a class='whitsse' id="hot" href="/hot">핫이슈 키워드 순위</a>
+                &nbsp&nbsp&nbsp<a class='white' id="news" href="/news" target="_self">뉴스 기반 키워드 순위</a></h1>
             </div>
         
             <div>
-            <table class='center' id='bars'>
+            <table class='center'>
                 <tr>
-                  <th><a class = 'site' href="/news?menu=total">전체</a></th>
-                  <th><a href="/news?menu=pol">정치</a></th>
-                  <th><a href="/news?menu=eco">경제</a></th>
-                  <th><a href="/news?menu=soc">사회</a></th>
-                  <th><a href="/news?menu=spo">스포츠</a></th>
+                  ${menus}
                 </tr>
               </table>
             </div>
@@ -39,7 +32,7 @@ module.exports={
             </div>
         
             <div>
-              <table class='center border' id="orders">
+              <table class='center border'>
                 <tr class='border backgray'>
                   <th><font color="white">#</font></th>
                   <th>키워드</th>
@@ -48,7 +41,7 @@ module.exports={
                 ${table}
               </table>
             </div>
-        
+            
           </body>
         </html>
         `;

@@ -1,3 +1,8 @@
+.clicked {
+  background-color:#fff;
+  color:black;
+}
+
 
 th:first-child { color: black; }
 .white { color: white; }
@@ -6,14 +11,16 @@ th:first-child { color: black; }
   color: lightsteelblue;}
 .white:active {color: lightsteelblue;}
 
+
 .site {color:#232D48;}
 .site:visited {color:#232D48;}
 .site:hover {font-weight: bold;
   color: lightsteelblue;}
 
+
 a { text-decoration: none;
 }
-a:visited { color: rgb(175, 174, 174);}
+a:visited { color: #afaeae;}
 a:hover {font-weight: bold;
   color: lightsteelblue;}
 a:active {color: rgb(175, 174, 174);}
